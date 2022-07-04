@@ -1,4 +1,4 @@
-# 
+# Projeto criado ao longo do curso "Imersão .Net Expert", da plataforma "luisdev"
 ## AwesomeShop.Services.Orders - Imersão .NET Expert
 ### Tecnologias, práticas e arquitetura utilizadas
 - ASP.NET Core com .NET 6
