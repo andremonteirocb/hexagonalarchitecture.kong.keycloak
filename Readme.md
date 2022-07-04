@@ -1,4 +1,4 @@
 
-## Configurações
-### Criar o container (docker-compose up -d) arquivo yml encontra-se na pasta
-### Baixar o Azure Storage Explorer
+## Estudo sobre arquitetura hexagonal, api gateway kong e keycloak;
+### O projeto foi criado ao longo do curso "Imersão .Net Expert", da plataforma "luisdev";
+### Execute o comando "docker-compose up -d"
