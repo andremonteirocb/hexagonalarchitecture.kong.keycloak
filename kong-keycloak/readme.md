@@ -196,7 +196,7 @@ Config|Value
 Key|orders-client
 Algorithm|RSA256
 RSA public-key| Pegar em http://localhost:8080/realms/master/protocol/openid-connect/certs a chave com valores { "kty": "RSA","alg": "RS256", "use": "sig", }
-Test | http://localhost:8080/realms/{{realm}}/protocol/openid-connect/auth?client_id={{client_id}}&redirect_uri=https://jwt.ms&grant_type=implicit&response_type=token
+Jwt.ms | http://localhost:8080/realms/{{realm}}/protocol/openid-connect/auth?client_id={{client_id}}&redirect_uri=https://jwt.ms&grant_type=implicit&response_type=token
 
 
 > Desabilitar API Key
