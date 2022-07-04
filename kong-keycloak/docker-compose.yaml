@@ -154,7 +154,7 @@ services:
   
   awesomeshop-orders-api:
     container_name: awesomeshop-orders-api
-    image: andremonteirocb/awesomeshop-orders-api:latest
+    image: andremonteirocb/awesomeshop-orders-api:1.1
     restart: always
     environment:
      - MONGO__Database=order-service
