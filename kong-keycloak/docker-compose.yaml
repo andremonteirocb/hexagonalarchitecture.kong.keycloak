@@ -52,7 +52,7 @@ services:
       retries: 5
 
   kong-bootstrap:
-    container_name: kong-bootstrap
+    container_name: kong-setup
     image: kong/kong-gateway:2.8
     command: "kong migrations bootstrap"
     restart: on-failure
@@ -77,7 +77,6 @@ services:
       - "8000:8000"   #PROXY
       - "8001:8001"   #ADMIN
       - "8002:8002"   #GUI
-  
     volumes:
       - ./certs:/etc/ssl/certs
     environment:
@@ -102,12 +101,12 @@ services:
       - postgres
       - kong-bootstrap
 
-  # prometheus:
-  #   container_name: prometheus
-  #   restart: always
-  #   image: prom/prometheus
-  #   volumes:
-  #     - ${PWD}/docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+  prometheus:
+    container_name: prometheus
+    restart: always
+    image: prom/prometheus
+    volumes:
+      - ./docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
   
   grafana:
     container_name: grafana
@@ -122,6 +121,7 @@ services:
     image: openzipkin/zipkin
     ports:
       - "9411:9411"
+      
   cors-test:
     container_name: corstest
     build: ./docker/front

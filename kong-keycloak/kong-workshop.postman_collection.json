@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "91d2bb88-a773-4f90-8cfa-9953389d9a4b",
-		"name": "kong-workshop",
+		"_postman_id": "a2b6783e-3a4a-49d9-8019-b57d4be5df81",
+		"name": "Kong-workshop",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "1749533"
+		"_exporter_id": "11628646"
 	},
 	"item": [
 		{
@@ -42,7 +42,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{awesomeshop-orders-api-baseurl}}/api/orders/?id=7c907b6b-36ac-44cc-ab76-7e5fd8293bae",
+							"raw": "{{awesomeshop-orders-api-baseurl}}/api/orders/?id=28cbc294-748a-4d04-9e5f-bac3c4290b31",
 							"host": [
 								"{{awesomeshop-orders-api-baseurl}}"
 							],
@@ -54,7 +54,7 @@
 							"query": [
 								{
 									"key": "id",
-									"value": "7c907b6b-36ac-44cc-ab76-7e5fd8293bae"
+									"value": "28cbc294-748a-4d04-9e5f-bac3c4290b31"
 								}
 							]
 						}
@@ -72,7 +72,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{kong-proxy-url}}/api/orders/?id=7c907b6b-36ac-44cc-ab76-7e5fd8293bae",
+							"raw": "{{kong-proxy-url}}/api/orders/?id=76c09efb-e270-469b-aefb-e5f76282df60",
 							"host": [
 								"{{kong-proxy-url}}"
 							],
@@ -84,7 +84,7 @@
 							"query": [
 								{
 									"key": "id",
-									"value": "7c907b6b-36ac-44cc-ab76-7e5fd8293bae"
+									"value": "76c09efb-e270-469b-aefb-e5f76282df60"
 								}
 							]
 						}
@@ -94,6 +94,21 @@
 				{
 					"name": "post",
 					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "sTaHeRYTbN0nIBlxnmT9klN6On82T8yr",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "apikey",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -121,6 +136,11 @@
 				},
 				{
 					"name": "get with route id",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"user-agent": true
+						}
+					},
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -134,10 +154,17 @@
 								"orders",
 								":id"
 							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "7c907b6b-36ac-44cc-ab76-7e5fd8293bae"
+									"value": "76c09efb-e270-469b-aefb-e5f76282df60"
 								}
 							]
 						}
@@ -204,6 +231,49 @@
 								"api",
 								"orders",
 								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get autheticated",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "apikey",
+								"value": "{{kong-api-key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{kong-proxy-url}}/api/orders/:id",
+							"host": [
+								"{{kong-proxy-url}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "dc5bde69-6f42-4817-9e24-f59a2b5e0798"
+								}
 							]
 						}
 					},
@@ -308,7 +378,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "aefc0b66-ce9b-489f-8509-b52d2d7efa5b"
+									"value": "76c09efb-e270-469b-aefb-e5f76282df60"
 								}
 							]
 						}
@@ -316,7 +386,7 @@
 					"response": []
 				},
 				{
-					"name": "token",
+					"name": "request token",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -417,7 +487,7 @@
 					"response": []
 				},
 				{
-					"name": "request user token",
+					"name": "request api user token",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -452,12 +522,69 @@
 								},
 								{
 									"key": "username",
-									"value": "johndoe",
+									"value": "bob",
 									"type": "text"
 								},
 								{
 									"key": "password",
-									"value": "pwd",
+									"value": "abc",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{keycloak-base-url}}/realms/{{keycloak-realm}}/protocol/openid-connect/token",
+							"host": [
+								"{{keycloak-base-url}}"
+							],
+							"path": [
+								"realms",
+								"{{keycloak-realm}}",
+								"protocol",
+								"openid-connect",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "refresh api token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "client_id",
+									"value": "{{keycloak-orders-client-client-id}}",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "{{keycloak-orders-client-secret}}",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "refresh_token",
+									"type": "text"
+								},
+								{
+									"key": "scope",
+									"value": "openid",
+									"type": "text"
+								},
+								{
+									"key": "refresh_token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJmMzQ1OGQ2MS03YzFkLTQ4NjctYjg1Ni01NGJjNTNjN2VlYzQifQ.eyJleHAiOjE2NTY5MDg1MjgsImlhdCI6MTY1NjkwNjcyOCwianRpIjoiMThmZTU2NDItYjQ2Zi00NGM1LTg5YmEtNTRmN2I0M2JiMzc4IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo4MDgwL3JlYWxtcy9tYXN0ZXIiLCJhdWQiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvcmVhbG1zL21hc3RlciIsInN1YiI6IjhhNGExNTA0LTBmNDktNDdjNC05M2UzLTAxYjM5YzNlMzI5ZiIsInR5cCI6IlJlZnJlc2giLCJhenAiOiJvcmRlcnMtY2xpZW50Iiwic2Vzc2lvbl9zdGF0ZSI6ImViNThmMTIxLTNhZjEtNDI0My04ZjRhLWU4ZGQwZjA4ZWVjYiIsInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgZW1haWwiLCJzaWQiOiJlYjU4ZjEyMS0zYWYxLTQyNDMtOGY0YS1lOGRkMGYwOGVlY2IifQ.hFA1MjJC8ZWl9xMEgV7kaka9pL0t0QSy0S_ECDhvYr0",
 									"type": "text"
 								}
 							]
@@ -590,7 +717,7 @@
 		},
 		{
 			"key": "kong-api-key",
-			"value": "WBMvVdN64sHuGKyjfZ1TnjnBeWM4wCSS"
+			"value": "sTaHeRYTbN0nIBlxnmT9klN6On82T8yr"
 		},
 		{
 			"key": "keycloak-realm",
@@ -607,7 +734,7 @@
 		},
 		{
 			"key": "keycloak-orders-client-secret",
-			"value": "Y77qZLCgJDzHG4S6aS3IxuZmdALJXHzl",
+			"value": "wpWBBqllPBYM38liSFBiZSSDyqMajyXU",
 			"type": "string"
 		}
 	]
