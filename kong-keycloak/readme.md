@@ -215,7 +215,7 @@ Plugin Request Transformer na Rota
 
 Config|Value
 -|-
-Config.Config.Replace.Uri|/realms/master/protocol/openid-connect/token
+Config.Replace.Uri|/realms/master/protocol/openid-connect/token
 
 ### Extras
 
